@@ -8,18 +8,62 @@ export default function ModalComponent({ onSelectProducts, deleteProducts, regis
   const [valueSearch, setValueSearch] = useState("");
   const handleCloseProduts = () => setShow(false);
   const handleShowProduts = () => setShow(true);
-     const getPickedProducts = () => {
-        const listProducts = []
-        const products =  watch();
-        for (let item in products) {
-            if(products[item] === true) {
-                listProducts.pus
-                console.log(item)
-            }
-            
-        }
-     }
-  const { watch, register } = useForm();
+  const handleSelectProduct = async (e) => {
+    const id = e.target.id
+    //const stock = await fetchMovimientos(id);
+    const product = products.find((item) => item.id == id)
+    onSelectProducts({...product})
+    handleCloseProduts();
+  };
+  const fetchMovimientos = async (id) => {
+    try {
+      const response = await supabase
+        .from("movimientos")
+        .select("id, quantity")
+        .eq("id_product", id);
+      if (response.error) {
+        throw response.error;
+      }
+      return response.data.reduce((a, b) => a + b.quantity, 0);
+    } catch (e) {
+      setError(e.message);
+    }
+  };
+  const fetchProductos = async () => {
+    try {
+      const response = await supabase.from("productos").select("id, name");
+      if (response.error) {
+        throw response.error;
+      }
+      const data = response.data;
+      return await Promise.all(data.map(async (item) => {
+        const stock = await fetchMovimientos(item.id);
+        return {...item, stock}
+      }))
+    } catch (e) {
+      setError(e.message);
+    }
+    finally{
+      console.log('cargado')
+    }
+  };
+  const filterProducts = () => {
+    return products.filter((item) =>
+      item.name.toLowerCase().includes(valueSearch?.toLowerCase() || "")
+    );
+  };
+  useEffect(() => {
+    setValueSearch(watch("search"));
+  }, [watch("search")]);
+  useEffect(() => {
+    const getProducts = async () => {
+      setProducts(await fetchProductos());
+    };
+    getProducts();
+  }, []);
+  useEffect(() => {
+    deleteProducts.map((id) => setValue(`id-${id}`, false));
+  }, [deleteProducts]);
   return (
     <Col className="mt-3">
       <Button
