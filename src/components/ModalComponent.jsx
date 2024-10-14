@@ -12,8 +12,7 @@ export default function ModalComponent({ data }) {
             if(products[item] === true) {
                 listProducts.pus
                 console.log(item)
-            }
-            
+            }  
         }
      }
   const { watch, register } = useForm();
