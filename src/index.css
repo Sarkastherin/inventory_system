@@ -1,0 +1,15 @@
+:root {
+  --orange-bg-rodar: #f8771b; /* Define aquí el color base violeta */
+  --bd-violet: #6f42c1; /* Define aquí el color base violeta */
+  --orange-bg-rodar: rgb(253, 127, 38);
+  --bd-violet-rgb: #ff9041;
+}
+.btn-bd-rodar {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--orange-bg-rodar);
+  --bs-btn-border-color: var(--orange-bg-rodar);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--bd-violet-rgb);
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+}
