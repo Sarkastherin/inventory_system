@@ -6,46 +6,31 @@ import { Button } from "react-bootstrap";
 import "../styles/NavBar.css";
 
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-function NavBar() {
-  const [theme, setTheme] = useState("dark");
-  useEffect(() => {
-    const html = document.querySelector("html");
-    html.setAttribute("data-bs-theme", theme);
-  }, [theme]);
-  const hadleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
-  };
+function NavBar({theme, handleTheme}) {
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar collapseOnSelect expand="md" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">Inventory System</Navbar.Brand>
+      <NavLink className="navbar-brand" to="/"><i className="bi bi-box-seam-fill"></i> Gestión de Stock</NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <NavLink className="nav-link" to="/movimientos">
               Movimientos
             </NavLink>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            <NavLink className="nav-link" to="/stock">
+              Stock
+            </NavLink>
+            <NavLink className="nav-link" to="/consultas">
+              Consultas
+            </NavLink>
           </Nav>
           <Nav>
             <Nav.Link href="#deets">More deets</Nav.Link>
             <Button
               className="button-toggle-theme rounded-circle"
-              variant={theme === 'dark' ? 'warning' : 'dark'}
-              onClick={hadleTheme}
+              variant={theme === 'dark' ? 'light' : 'dark'}
+              onClick={handleTheme}
             >
               {theme === "dark" ? (
                 <i className="bi bi-sun-fill"></i>

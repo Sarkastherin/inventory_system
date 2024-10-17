@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
-export default function Layout() {
+import { useEffect, useState } from "react";
+export default function Layout({handleTheme, theme}) {
+  /* useEffect(() => {
+    handleTheme()
+  },[theme]) */
   return (
     <>
-      <NavBar />
-      <Outlet />
+      <NavBar handleTheme={handleTheme} theme={theme}/>
+      <Outlet/>
     </>
   );
 }

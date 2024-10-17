@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import { supabase } from "../API/client";
 import { useState, useEffect } from "react";
-export default function SelectComponentArea({ register, errors, setValue }) {
+export default function SelectComponentArea({ register, errors }) {
   const [dataAreas, setDataAreas] = useState([]);
   useEffect(() => {
     const fetchAreas = async () => {
@@ -12,7 +12,7 @@ export default function SelectComponentArea({ register, errors, setValue }) {
         }
         setDataAreas(response.data);
       } catch (e) {
-        setError(e.message);
+        console.error(e.message);
       }
     }
     fetchAreas();

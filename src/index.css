@@ -1,8 +1,54 @@
-:root {
-  --orange-bg-rodar: #f8771b; /* Define aquí el color base violeta */
-  --bd-violet: #6f42c1; /* Define aquí el color base violeta */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html[data-bs-theme='light'] {
+  .table tr th, h5, h2{
+    color: #444
+  }
+  .navbar-brand {
+    color: #444;
+  }
+  /* .navbar {
+    background-color: var(--bs-primary) !important;
+    
+  } */
+}
+td {
+  padding: 0.3rem 0.25rem !important;
+}
+th{
+  font-weight: 500;
+}
+.modal-alert {
+  .modal-content {
+    border-color: var(--bs-warning);
+  }
+  .modal-header {
+    border-color: var(--bs-warning)
+  }
+  .modal-footer {
+    border-color: var(--bs-warning)
+  }
+}
+.modal-rodar, .modal-loading {
+  .modal-content {
+    border-color: var(--bs-orange);
+  }
+  .modal-header {
+    border-color: var(--bs-orange)
+  }
+  .modal-footer {
+    border-color: var(--bs-orange)
+  }
+}
+.modal-success {
+  .modal-content {
+    border-color: var(--bs-success);
+  }
+}
+/* :root {
+  --orange-bg-rodar: #f8771b;
   --orange-bg-rodar: rgb(253, 127, 38);
-  --bd-violet-rgb: #ff9041;
+  --bd-orange-light: #f8934b;
 }
 .btn-bd-rodar {
   --bs-btn-font-weight: 600;
@@ -13,3 +59,57 @@
   --bs-btn-hover-bg: var(--bd-violet-rgb);
   --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
 }
+td {
+  padding: 0.3rem 0.15rem !important;
+}
+html[data-bs-theme='dark'] {
+  .navbar{
+    background-color: #f8934b;
+  }
+}
+html[data-bs-theme='light'] {
+  .table tr th, h5, h2{
+    color: #444
+  }
+  .navbar {
+    background-color: var(--bs-orange) !important;
+  }
+}
+.modal-alert {
+  .modal-content {
+    border-color: var(--bs-warning);
+  }
+  .modal-header {
+    border-color: var(--bs-warning)
+  }
+  .modal-footer {
+    border-color: var(--bs-warning)
+  }
+}
+.modal-rodar, .modal-loading {
+  .modal-content {
+    border-color: var(--orange-bg-rodar);
+  }
+  .modal-header {
+    border-color: var(--orange-bg-rodar)
+  }
+  .modal-footer {
+    border-color: var(--orange-bg-rodar)
+  }
+}
+.modal-success {
+  .modal-content {
+    border-color: var(--bs-success);
+  }
+}
+.btn-rodar {
+  background-color: var(--bd-orange-light);
+  border-color: var(--bd-orange-light);
+  color: #333;
+  
+}
+.btn-rodar:hover{
+  background-color: var(--orange-bg-rodar);
+  color: #333;
+}
+ */

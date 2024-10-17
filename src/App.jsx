@@ -11,6 +11,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Layout from "./components/Layout";
 import Movimientos from "./pages/Movimientos";
+import Stock from "./pages/Stock";
+import { useEffect, useState } from "react";
+import Consultas from "./pages/Consultas";
 
 // Este loader se encargará de verificar si el usuario está autenticado
 const authLoader = async () => {
@@ -22,24 +25,34 @@ const authLoader = async () => {
   }
   return null
 };
-const routes = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    loader: authLoader,
-    children: [
-      {path: "/",element: <Home />},
-      {path: "/movimientos",element: <Movimientos />},
-      {path: "*",element: <NotFoundPage />},
-    ]
-  
-  },
-  {path: "/login",element: <Login />}
-]);
 
 function App() {
-  
-  return <RouterProvider router={routes} />;
+  const [theme, setTheme] = useState("dark");
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-bs-theme", theme);
+  }, [theme]);
+  const handleTheme = () => {
+    //console.log(theme)
+    setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+  }
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout handleTheme={handleTheme} theme={theme}/>,
+      loader: authLoader,
+      children: [
+        {path: "/",element: <Home />},
+        {path: "/movimientos",element: <Movimientos theme={theme}/>},
+        {path: "/stock",element: <Stock theme={theme}/>},
+        {path: "/consultas",element: <Consultas theme={theme}/>},
+        {path: "*",element: <NotFoundPage />},
+      ]
+    
+    },
+    {path: "/login",element: <Login />}
+  ]);
+  return <RouterProvider router={routes} handleTheme={handleTheme}/>;
 }
 
 export default App;
