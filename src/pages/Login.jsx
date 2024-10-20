@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
         const response = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                emailRedirectTo: '/'
+                emailRedirectTo: "/inventory_system/"
               }
           })
           console.log(response)
