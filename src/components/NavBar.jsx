@@ -11,17 +11,17 @@ function NavBar({theme, handleTheme}) {
   return (
     <Navbar collapseOnSelect expand="md" className="bg-body-tertiary">
       <Container>
-      <NavLink className="navbar-brand" to="/"><i className="bi bi-box-seam-fill"></i> Gestión de Stock</NavLink>
+      <NavLink className="navbar-brand" to="/inventory_system/"><i className="bi bi-box-seam-fill"></i> Gestión de Stock</NavLink>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <NavLink className="nav-link" to="/movimientos">
+            <NavLink className="nav-link" to="/inventory_system/movimientos">
               Movimientos
             </NavLink>
-            <NavLink className="nav-link" to="/stock">
+            <NavLink className="nav-link" to="/inventory_system/stock">
               Stock
             </NavLink>
-            <NavLink className="nav-link" to="/consultas">
+            <NavLink className="nav-link" to="/inventory_system/consultas">
               Consultas
             </NavLink>
           </Nav>
