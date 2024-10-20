@@ -1,6 +1,7 @@
 {
   "name": "storage-module",
   "private": true,
+  "homepage": "http//SaSarkastherin.github.io/inventory_system",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -8,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
