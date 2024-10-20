@@ -7,7 +7,11 @@ export default defineConfig({
   base: '/inventory_system/',
   define: {
     'process.env': {}
-  }  
+  },
+  define: {
+    'process.env.VITE_PROYECT_URL': JSON.stringify(process.env.VITE_PROYECT_URL),
+    'process.env.VITE_API_KEY': JSON.stringify(process.env.VITE_API_KEY),
+  },
 })
 //https://<USERNAME>.github.io/<REPO>/
 //https://github.com/Sarkastherin/inventory_system
