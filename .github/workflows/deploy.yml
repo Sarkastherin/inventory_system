@@ -16,6 +16,10 @@ concurrency:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -44,7 +48,7 @@ jobs:
       - name: Upload to Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist'
+          path: '../../dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
