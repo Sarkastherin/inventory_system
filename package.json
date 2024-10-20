@@ -1,7 +1,6 @@
 {
   "name": "storage-module",
   "private": true,
-  "homepage": "http//SaSarkastherin.github.io/inventory_system",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
