@@ -21,7 +21,7 @@ const authLoader = async () => {
     data: { session },
   } = await supabase.auth.getSession();
   if (!session) {
-    return redirect("/login");
+    return redirect("/inventory_system/login");
   }
   return null
 };
@@ -38,19 +38,19 @@ function App() {
   }
   const routes = createBrowserRouter([
     {
-      path: "/",
+      path: "/inventory_system/",
       element: <Layout handleTheme={handleTheme} theme={theme}/>,
       loader: authLoader,
       children: [
-        {path: "/",element: <Home />},
-        {path: "/movimientos",element: <Movimientos theme={theme}/>},
-        {path: "/stock",element: <Stock theme={theme}/>},
-        {path: "/consultas",element: <Consultas theme={theme}/>},
+        {path: "/inventory_system/",element: <Home />},
+        {path: "/inventory_system/movimientos",element: <Movimientos theme={theme}/>},
+        {path: "/inventory_system/stock",element: <Stock theme={theme}/>},
+        {path: "/inventory_system/consultas",element: <Consultas theme={theme}/>},
         {path: "*",element: <NotFoundPage />},
       ]
     
     },
-    {path: "/login",element: <Login />}
+    {path: "/inventory_system/login",element: <Login />}
   ]);
   return <RouterProvider router={routes} handleTheme={handleTheme}/>;
 }
