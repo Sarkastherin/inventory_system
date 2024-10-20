@@ -29,7 +29,7 @@ const getNameUser = () => {
   return (
     <Form onSubmit={handleSubmit} className="mt-5 mx-auto" style={{maxWidth: '500px'}}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Correo electronio</Form.Label>
         <Form.Control onChange={handleChange} type="email" placeholder="name@example.com" />
       </Form.Group>
       <Col>

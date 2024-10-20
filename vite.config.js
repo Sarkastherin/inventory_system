@@ -7,7 +7,7 @@ export default defineConfig({
   define: {
     'process.env': {}
   },
-  base: 'inventory_system'
+  base: '/inventory_system/'
 })
 //https://<USERNAME>.github.io/<REPO>/
 //https://github.com/Sarkastherin/inventory_system
