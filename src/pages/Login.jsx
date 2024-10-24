@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
         const response = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-              redirectTo: 'https://sarkastherin.github.io/inventory_system/', // Asegúrate de que esto esté correcto
+              redirectTo: '/', // Asegúrate de que esto esté correcto
             },
           })
           console.log(response)
