@@ -22,7 +22,7 @@ const authLoader = async () => {
     data: { session },
   } = await supabase.auth.getSession();
   if (!session) {
-    return redirect("/inventory_system/login");
+    return redirect("/login");
   }
   return null
 };
@@ -39,7 +39,7 @@ function App() {
   }
   const routes = createHashRouter([
     {
-      path: "/inventory_system/",
+      path: "/",
       element: <Layout handleTheme={handleTheme} theme={theme}/>,
       loader: authLoader,
       children: [
@@ -51,7 +51,7 @@ function App() {
       ]
     
     },
-    {path: "/inventory_system/login",element: <Login />}
+    {path: "/login",element: <Login />}
   ]);
   return <RouterProvider router={routes} handleTheme={handleTheme}/>;
 }
