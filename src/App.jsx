@@ -1,7 +1,8 @@
 import {
   createBrowserRouter,
   RouterProvider,
-  redirect
+  redirect,
+  createHashRouter
 } from "react-router-dom";
 import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -36,16 +37,16 @@ function App() {
     //console.log(theme)
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   }
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
     {
       path: "/inventory_system/",
       element: <Layout handleTheme={handleTheme} theme={theme}/>,
       loader: authLoader,
       children: [
-        {path: "/inventory_system/",element: <Home />},
-        {path: "/inventory_system/movimientos",element: <Movimientos theme={theme}/>},
-        {path: "/inventory_system/stock",element: <Stock theme={theme}/>},
-        {path: "/inventory_system/consultas",element: <Consultas theme={theme}/>},
+        {path: "/",element: <Home />},
+        {path: "/movimientos",element: <Movimientos theme={theme}/>},
+        {path: "/stock",element: <Stock theme={theme}/>},
+        {path: "/consultas",element: <Consultas theme={theme}/>},
         {path: "*",element: <NotFoundPage />},
       ]
     
