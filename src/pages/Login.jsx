@@ -15,7 +15,7 @@ function Login() {
       const response = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: "/inventory_system/", // Asegúrate de que esto esté correcto
+          redirectTo: "https://sarkastherin.github.io/inventory_system/#", // Asegúrate de que esto esté correcto
         },
       });
       console.log(response);
