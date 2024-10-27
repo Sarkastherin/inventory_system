@@ -26,7 +26,6 @@ function NavBar({theme, handleTheme}) {
             </NavLink>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
             <Button
               className="button-toggle-theme rounded-circle"
               variant={theme === 'dark' ? 'light' : 'dark'}

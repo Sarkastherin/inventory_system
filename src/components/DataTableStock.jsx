@@ -2,10 +2,10 @@ import DataTable from "react-data-table-component";
 import { supabase } from "../API/client";
 import { useState, useEffect } from "react";
 import ModalStock from "./ModalStock";
-import { Form } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 import ModalLoading from "./ModalLoading";
 import ModalSuccess from "./ModalSuccess";
-
+import { CSVLink } from "react-csv";
 
 const columns = [
   {
@@ -28,7 +28,12 @@ const columns = [
 ];
 
 export default function DataTableStock({ theme }) {
-  
+  const headers = [
+    { label: "Id", key: "id_product" },
+    { label: "Descripción", key: "name_product" },
+    { label: "Stock", key: "stock" },
+    { label: "Unidad", key: "units" },
+  ];
   const [products, setProducts] = useState([]);
   const [show, setShow] = useState(false);
   const [product, setProduct] = useState({});
@@ -41,13 +46,13 @@ export default function DataTableStock({ theme }) {
   /* Modal Loading */
   const [showLoading, setShowLoading] = useState(false);
   const handleCloseLoading = () => setShowLoading(false);
-  const handleShowLoading = () => setShowLoading(true)
+  const handleShowLoading = () => setShowLoading(true);
   /* Modal Success */
   const [showSuccess, setShowSuccess] = useState(false);
   const handleCloseSuccess = () => {
-    setShowSuccess(false)
+    setShowSuccess(false);
   };
-  const handleShowSuccess = () => setShowSuccess(true)
+  const handleShowSuccess = () => setShowSuccess(true);
   const [records, setRecords] = useState([]);
   const handleSearchValue = (e) => {
     const value = e.target.value;
@@ -66,6 +71,7 @@ export default function DataTableStock({ theme }) {
           throw response.error;
         }
         const data = response.data;
+        console.log(data)
         setProducts(data);
         setRecords(data);
       } catch (e) {
@@ -87,36 +93,53 @@ export default function DataTableStock({ theme }) {
     return response;
   };
   const settingStok = async (value) => {
-    handleClose()
+    handleClose();
     const dataAjuste = {
-      id_area: '12',
-        type: 'Ajuste',
-        id_product: product.id_product,
-        quantity: value
-    }
+      id_area: "12",
+      type: "Ajuste",
+      id_product: product.id_product,
+      quantity: value,
+    };
     try {
-      handleShowLoading()
+      handleShowLoading();
       const response = await postData(dataAjuste);
-      if(response.status >= 200 && response.status <= 299) {
-        handleCloseLoading()
-        handleShowSuccess()
-        
+      if (response.status >= 200 && response.status <= 299) {
+        handleCloseLoading();
+        handleShowSuccess();
       }
-      console.log(response)
+      console.log(response);
     } catch (e) {
       console.log(e);
     }
-    console.log(dataAjuste)
-  }
-  
+    console.log(dataAjuste);
+  };
+
   return (
     <>
-      <Form.Control
-        className="mb-3"
-        type="search"
-        placeholder="Productos por descripción"
-        onInput={handleSearchValue}
-      />
+      <Form className="mb-3 align">
+      <Row className="g-1 align-items-end">
+        <Form.Group as={Col} controlId="filterDescription">
+          <Form.Label>Descripción</Form.Label>
+          <Form.Control
+            type="search"
+            placeholder="Productos por descripción"
+            onInput={handleSearchValue}
+            size="sm"
+          />
+        </Form.Group>
+        <Col sm={"auto"}>
+          <CSVLink
+            className="btn btn-success btn-sm"
+            role="button"
+            data={records}
+            headers={headers}
+            filename="stock"
+          >
+            <i className="bi bi-file-excel"></i> Exportar
+          </CSVLink>
+        </Col>
+        </Row>
+      </Form>
       <DataTable
         columns={columns}
         data={records}
@@ -136,16 +159,13 @@ export default function DataTableStock({ theme }) {
         theme={theme}
         settingStok={settingStok}
       />
-      <ModalLoading
-        showLoading={showLoading}
-        theme={theme}
-      />
+      <ModalLoading showLoading={showLoading} theme={theme} />
       <ModalSuccess
         showSuccess={showSuccess}
         theme={theme}
         handleCloseSuccess={handleCloseSuccess}
-        valueButton={'Refrescat'}
-        message={'Refresque para ver los cambios'}
+        valueButton={"Refrescat"}
+        message={"Refresque para ver los cambios"}
       />
     </>
   );

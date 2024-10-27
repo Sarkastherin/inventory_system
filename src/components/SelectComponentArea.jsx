@@ -1,4 +1,4 @@
-import { Form } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import { supabase } from "../API/client";
 import { useState, useEffect } from "react";
 export default function SelectComponentArea({ register, errors }) {
@@ -18,12 +18,12 @@ export default function SelectComponentArea({ register, errors }) {
     fetchAreas();
   }, []);
   return (
-    <Form.Group className="mt-3" controlId="id">
+    <Form.Group className="mt-3" controlId="id" as={Col} sm={"auto"}>
         <Form.Label>Área</Form.Label>
-        <Form.Select
+        <Form.Select size="sm"
           {...register("area", {
             required: {
-              value: true,
+              value: errors ? true : false,
               message: "Debe seleccionar un área",
             },
           })}
@@ -35,7 +35,7 @@ export default function SelectComponentArea({ register, errors }) {
             </option>
           ))}
         </Form.Select>
-        {errors.area && (
+        {errors && errors.area && (
           <div className="form-text text-danger">{errors.area.message}</div>
         )}
       </Form.Group>
