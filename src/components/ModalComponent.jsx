@@ -53,7 +53,6 @@ export default function ModalComponent({
         variant={theme==='dark'?'light':'dark'}
         type="button"
         onClick={handleShowProduts}
-        size="sm"
         style={{fontWeight: '600'}}
       >
         Seleccionar productos

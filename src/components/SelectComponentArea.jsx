@@ -20,7 +20,7 @@ export default function SelectComponentArea({ register, errors }) {
   return (
     <Form.Group className="mt-3" controlId="id" as={Col} sm={"auto"}>
         <Form.Label>Área</Form.Label>
-        <Form.Select size="sm"
+        <Form.Select
           {...register("area", {
             required: {
               value: errors ? true : false,

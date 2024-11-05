@@ -17,9 +17,9 @@ export default function Home() {
           <Card.Body>
             <Card.Title>Ingresar nuevo movimientos</Card.Title>
             <Card.Text>
-              <p>Realizar movimientos de netrad y salida de articulos</p>
+              <p>Realizar movimientos de entrada y salida de articulos</p>
               <NavLink className="btn btn-info" to="/movimientos">
-                Ir a movimeintos
+                Ir a movimientos
               </NavLink>
             </Card.Text>
           </Card.Body>
@@ -39,9 +39,9 @@ export default function Home() {
         <Card border="warning" style={{ width: "20rem" }}>
           <Card.Header>Consultas</Card.Header>
           <Card.Body>
-            <Card.Title>Consultar de movimientos</Card.Title>
+            <Card.Title>Consultas de movimientos</Card.Title>
             <Card.Text>
-              <p>Realizar consultas de movimeintos</p>
+              <p>Realizar consultas de movimientos</p>
               <NavLink className="btn btn-warning" to="/consultas">
                 Ir a Consultas
               </NavLink>
