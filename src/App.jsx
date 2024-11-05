@@ -40,7 +40,7 @@ function App() {
     {
       path: "/",
       element: <Layout handleTheme={handleTheme} theme={theme}/>,
-      /* loader: authLoader, */
+      loader: authLoader,
       children: [
         {path: "/",element: <Home />},
         {path: "/movimientos",element: <Movimientos theme={theme}/>},
